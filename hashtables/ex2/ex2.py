@@ -1,4 +1,3 @@
-#  Hint:  You may not need all of these.  Remove the unused functions.
 class Ticket:
     def __init__(self, source, destination):
         self.source = source
@@ -6,9 +5,16 @@ class Ticket:
 
 
 def reconstruct_trip(tickets, length):
-    """
-    YOUR CODE HERE
-    """
-    # Your code here
+    cache = {}
 
-    return route
+    for e in tickets:
+        cache[e.source] = e.destination
+    
+    pointer = cache["NONE"]
+    outputArr = [pointer]
+
+    while cache[pointer] != "NONE":
+        outputArr.append(cache[pointer])
+        pointer = cache[pointer]
+
+    return outputArr
