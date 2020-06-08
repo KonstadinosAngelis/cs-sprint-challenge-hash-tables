@@ -1,7 +1,3 @@
-# Your code here
-
-
-
 def finder(files, queries):
     cache = {}
 
@@ -9,17 +5,15 @@ def finder(files, queries):
         output = e.split("/")
 
         if output[-1] in cache:
-            cache[output[-1]][1] += 1
+            cache[output[-1]].append(files[idx]) 
         else:
-            cache[output[-1]] = [idx, 1]
+            cache[output[-1]] = [files[idx]]
 
     outputArr = []
     for e in queries:
         if e in cache:
-            # print(cache[e][1])
-            for t in range(cache[e][1]):
-                outputArr.append(files[cache[e][0]])
-    print(outputArr)
+            for t in cache[e]:
+                outputArr.append(t)
     return outputArr
 
 
